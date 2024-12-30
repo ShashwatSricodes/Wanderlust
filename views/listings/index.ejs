@@ -1,0 +1,74 @@
+<% layout("/layouts/boilerplate") -%>
+
+<style>
+  a {
+  color: inherit; /* Inherit the text color from the parent element */
+  text-decoration: none; /* Remove the underline */
+}
+</style>
+<body>
+  <form method="GET" action="/listings/">  
+    <div id="filters">
+      <div class="filter">
+        <!-- Category: Trending -->
+        <a href="/listings/?category=Trending">
+          <div><i class="fa-solid fa-fire"></i></div>
+          <p>Trending</p>
+        </a>
+      </div>
+
+      <div class="filter">
+        <!-- Category: Rooms -->
+        <a href="/listings/?category=Rooms">
+          <div><i class="fa-solid fa-people-roof"></i></div>
+          <p>Rooms</p>
+        </a>
+      </div>
+
+      <div class="filter">
+        <!-- Category: Iconic Cities -->
+        <a href="/listings/?category=Iconic-cities">
+          <div><i class="fa-solid fa-mountain-city"></i></div>
+          <p>Iconic-cities</p>
+        </a>
+      </div>
+
+      <div class="filter">
+        <!-- Category: Beaches -->
+        <a href="/listings/?category=Beaches">
+          <div><i class="fa-solid fa-umbrella-beach"></i></div>
+          <p>Beaches</p>
+        </a>
+      </div>
+
+      <div class="filter">
+        <!-- Category: Castles -->
+        <a href="/listings/?category=Castles">
+          <div><i class="fa-brands fa-fort-awesome"></i></div>
+          <p>Castles</p>
+        </a>
+      </div>
+    </div>
+  </form>
+
+  <div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 g-3 mt-3">
+    <% for (let listing of allListings) { %>
+      <a href="/listings/<%= listing._id %>" class="listinglink">
+        <div class="col">
+          <div class="card h-100 listing-card" style="width: 20rem">
+            <img src="<%= listing.image.url %>" class="card-img-top" style="height : 20rem" alt="...">
+            <div class="card-body">
+              <div class="card-img-overlay"></div>
+              <p class="card-text">
+                <b><%= listing.title %></b><br>
+                &#8377; <%= listing.price.toLocaleString("en-IN") %> /night
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% } %>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+/* Main Body CSS*/
+ 
+ body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    font-weight: 400 !important; /* Set default weight for the body */
+    font-style: normal !important;
+    display: flex;
+    flex-direction :column;
+    min-height :100vh;
+  }
+
+  .container {
+    flex-grow: 1; /* This will ensure the container takes up available space */
+}
+
+  .plus-jakarta-sans-bold {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 800; /* Example of using a different font weight */
+  }
+
+  /* Nav-bar CSS*/
+
+.navbar {
+    height: 4rem;
+    background-color: #ffffff;
+}
+
+.fa-airbnb {
+
+    color: #fe424d;
+    font-size: 2rem;
+
+}
+
+.nav-link {
+
+    color: #222222 !important;
+}
+
+/* Footer */
+
+
+.f-info{
+  flex-shrink: 0;
+  background-color: #9d9696;
+}
+.f-info-links a {
+    text-decoration: none;
+    color: #222222;
+
+}
+
+.f-info-links {
+    width: 100%;
+}
+
+.f-info-socials,
+.brand {
+
+    width: 100%;
+    display: flex;
+    align-items: center; /* vertically align karega */
+    justify-content: center; /* horizontally */
+
+}
+
+.f-info-socials i {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+
+.f-info-links a:hover {
+    text-decoration: underline;
+
+}
+
+.f-info {
+
+    text-align: center;
+    display: flex;
+    height: 8rem;
+    background-color: rgb(237, 236, 234);
+    flex-wrap: wrap; /* Allows content to be wrapped on multiple Lines */
+    justify-content: center;
+    align-items: space-evenly;
+}
+
+/*cards*/
+
+.listing-card{
+    border: none !important;
+    margin-bottom : 2rem !important;
+
+}
+
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important; 
+    object-fit: cover !important;
+}
+
+  .card-body{
+padding: 0 !important;
+  }
+
+  .card-text p{
+
+  font-weight: 400;
+
+  }
+
+  .listinglink
+  {
+    text-decoration: none;
+  }
+
+  .card-img-overlay{
+
+    opacity: 0;
+
+  }
+
+  .card-img-overlay:hover{
+
+    opacity: 0.2;
+    background-color: white;
+
+
+  }
+
+  .add-btn {
+     background-color: #fe424d !important;
+     border: none !important;
+  }
+
+  .edit-btn{
+    background-color: #fe424d !important;
+    border: none !important;
+  }
+
+  /* Image responsiveness */
+.card-img-top {
+  width: 100%;
+  height: auto; /* This ensures the image scales with the width */
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+/* Review Section Styling */
+.review-section {
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #222222;
+}
+
+textarea.form-control {
+  resize: vertical; /* Allows the user to resize the textarea vertically */
+  padding: 10px;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+textarea.form-control:focus {
+  border-color: #fe424d; /* Highlight border when focused */
+  box-shadow: 0 0 5px rgba(254, 66, 77, 0.5);
+}
+
+.btn-dark {
+  background-color: #fe424d;
+  border: none;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+/* Filters Created on top */
+
+
+#filters {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter {
+  text-align: center;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  opacity: 0.7;
+  display: flex;
+  /* Makes the filter a flex container */
+  flex-direction: column;
+  /* Ensures icons and text are stacked vertically */
+  align-items: center;
+  /* Centers items horizontally */
+}
+
+.filter p {
+  font-size: 0.8rem;
+}
+

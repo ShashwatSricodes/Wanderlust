@@ -1,0 +1,70 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="text-center mt-2">
+  <h3>Create new Listing</h3>
+</div>
+
+<div class="row justify-content-center mt-4">
+  <div class="col-md-8">
+
+    <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+
+      <div class="mb-3">
+        <label for="title" class="form-label" >Title</label>
+        <input name="listing[title]" placeholder="Enter title" type="text" class="form-control" required>
+        <div class="invalid-feedback">Enter a valid title</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="listing[description]" placeholder="Enter description" class="form-control" required></textarea>
+        <div class="invalid-feedback">Enter a valid description</div>
+
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Image URL</label>
+        <input name="listing[image.url]" placeholder="Enter image link" type="text" class="form-control " >
+      </div>
+      
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Image </label>
+        <input name="listing[image]"  type="file" class="form-control " required >
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label for="price" class="form-label" >Price</label>
+          <input name="listing[price]" placeholder="Enter price" type="text" class="form-control" required>
+          <div class="invalid-feedback">Enter valid price</div>
+        </div>
+        <div class="col-md-8">
+          <label for="country" class="form-label">Country</label>
+          <input name="listing[country]" placeholder="Enter country" type="text" class="form-control" required>
+          <div class="invalid-feedback">Enter a valid country</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select name="listing[category]" class="form-control" required>
+          <% categories.forEach(category => { %>
+            <option value="<%= category %>"><%= category %></option>
+          <% }) %>
+        </select>
+        <div class="invalid-feedback">Please select a category</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label" required>Location</label>
+        <input name="listing[location]" placeholder="Enter location" type="text" class="form-control" required>
+        <div class="invalid-feedback">Enter a valid location</div>
+      </div>
+
+      <div class="text-center mt-4">
+        <button class="btn btn-dark edit-btn">ADD</button>
+      </div>
+
+    </form>
+  </div>
+</div>
