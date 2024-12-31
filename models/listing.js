@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema; // Mongoose object hai jo ki schema define karta hai 
-const Review = require("./review.js"); // ./ refers to file in the current directory. & ../ refers to the parent directory.
-
+const Schema = mongoose.Schema;
+const Review = require("./review.js");
 
 const ListingSchema = new Schema({
     title: {
@@ -12,38 +11,31 @@ const ListingSchema = new Schema({
     image: {
         url: String,
         filename: String
-        
     },
     price: Number,
     location: String,
     country: String,
-
-    reviews: // Relationship stablish karta hai between reviews and Listings
-    [
+    reviews: [
         {
-            type : Schema.Types.ObjectId,
-            ref : "Review", //Indicates that the ObjectId corresponds to a document in the Review collection.
+            type: Schema.Types.ObjectId,
+            ref: "Review"
         }
-    ], // a listing can have multiple reviews that is why an array is used.
+    ],
     owner: {
-        type : Schema.Types.ObjectId,
-        ref : "User",        
+        type: Schema.Types.ObjectId,
+        ref: "User"
     },
     category: {
-        type: String, // Category should be a string
-        enum: ['Trending', 'Rooms', 'Iconic-cities', 'Beaches', 'Castles'], // Optional: Define allowed categories
-      
+        type: String,
+        enum: ['Trending', 'Rooms', 'Iconic-cities', 'Beaches', 'Castles']
     }
 });
 
-ListingSchema.post("findOneAndDelete" , async(listing)=> // It is a middleware Automatically deletes all reviews associated with a listing when the listing is deleted.
-{
-    if(listing){
-    await Review.deleteMany({_id : {$in : listing.reviews}})
+ListingSchema.post("findOneAndDelete", async (listing) => {
+    if (listing) {
+        await Review.deleteMany({ _id: { $in: listing.reviews } });
     }
 });
 
 const Listing = mongoose.model("Listing", ListingSchema);
 module.exports = Listing;
-
-

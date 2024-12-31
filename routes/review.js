@@ -9,12 +9,12 @@ const { isLoggedIn } = require("../middleware.js");
 const ReviewController = require("../controllers/reviews.js")
 
 
-// Review validation
+
 const validateReview = (req, res, next) => {
-    const { error } = reviewSchema.validate(req.body.review);  // Validate the review object
+    const { error } = reviewSchema.validate(req.body.review);  
     if (error) {
         const msg = error.details.map(el => el.message).join(',');
-        return next(new ExpressError(400, msg));  // Throw custom error for validation failure
+        return next(new ExpressError(400, msg));  
     } else {
         next();
     }
@@ -23,15 +23,15 @@ const validateReview = (req, res, next) => {
 router
     .route("/listings/:id/reviews")
     .post(
-        isLoggedIn,          // Ensure user is logged in before adding a review
-        validateReview,      // Validate the review object
+        isLoggedIn,         
+        validateReview,    
         wrapAsync(ReviewController.CreateReview)
     );
 
 router
     .route("/listings/:id/reviews/:reviewId")
     .delete(
-        isLoggedIn,          // Ensure user is logged in before deleting a review
+        isLoggedIn,          
         wrapAsync(ReviewController.DeleteReviews)
     );
 

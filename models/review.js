@@ -4,21 +4,21 @@ const Schema = mongoose.Schema;
 const reviewSchema = new Schema({
     comment: {
         type: String,
-        required: true, // Ensures a comment is provided
+        required: true
     },
     rating: {
         type: Number,
         min: 1,
         max: 5,
-        required: true, // Ensures a rating is provided
+        required: true
     },
     createdAt: {
         type: Date,
-        default: Date.now, // Corrected spelling and removed function call
+        default: Date.now
     },
     author: {
         type: Schema.Types.ObjectId,
-        ref: "User" // Reference to the User model
+        ref: "User"
     }
 });
 

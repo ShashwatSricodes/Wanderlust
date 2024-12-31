@@ -4,15 +4,15 @@ module.exports.SignUp = (req, res) => {
     res.render("users/signup.ejs");
 };
 
-module.exports.SignUppost = async (req, res, next) => { // Add next here for proper error handling
+module.exports.SignUppost = async (req, res, next) => {
     try {
         let { username, email, password } = req.body;
         const newUser = new User({ email, username });
-        const registeredUser = await User.register(newUser, password); // passport ka use kar rhe hain. 
-        
-        req.login(registeredUser, (err) => { // this line automatically registers the user once they sign up. 
+        const registeredUser = await User.register(newUser, password);
+
+        req.login(registeredUser, (err) => {
             if (err) {
-                return next(err); // Properly pass the error to next middleware
+                return next(err);
             }
             req.flash("success", "User was registered");
             res.redirect("/listings");
@@ -28,17 +28,16 @@ module.exports.Login = (req, res) => {
 };
 
 module.exports.Loginpost = async (req, res) => {
-    req.flash("success", "Welcome to Wanderlust, you are logged in"); // I don't see the lgin logic will have to see to that. 
-    res.redirect(res.locals.redirectUrl || "/listings") ; // Ensure it redirects to the intended URL or default to "/listings" 
+    req.flash("success", "Welcome to Wanderlust, you are logged in");
+    res.redirect(res.locals.redirectUrl || "/listings");
 };
 
 module.exports.Logout = (req, res, next) => {
     req.logout((err) => {
         if (err) {
-            return next(err); // Pass the error to the next middleware if it exists
+            return next(err);
         }
         req.flash("success", "You are logged out!");
         res.redirect("/listings");
     });
 };
-
